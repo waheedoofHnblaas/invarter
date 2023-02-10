@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:invarter/controller/auth_controller/register_controller.dart';
 import 'package:get/get.dart';
-import 'package:invarter/controller/auth_controller/login_contoller.dart';
 import 'package:invarter/core/class/handelingview.dart';
 import 'package:invarter/core/constant/colors.dart';
 import 'package:invarter/core/function/validinput.dart';
 import 'package:invarter/view/widgets/apploginbutton.dart';
-import 'package:invarter/view/widgets/apploginsignup.dart';
 import 'package:invarter/view/widgets/appsliverappbar.dart';
 import 'package:invarter/view/widgets/apptextfield.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class RegisterNewUserPage extends StatelessWidget {
+  const RegisterNewUserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(
-      () => LoginControllerImp(),
+      () => RegisterControllerImp(),
       fenix: true,
     );
 
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: GetBuilder<LoginControllerImp>(builder: (controller) {
+        child: GetBuilder<RegisterControllerImp>(builder: (controller) {
           return HandelingRequest(
             statusRequest: controller.statusRequest!,
             widget: Center(
@@ -30,7 +29,7 @@ class LoginPage extends StatelessWidget {
                 key: controller.formState,
                 child: CustomScrollView(
                   slivers: [
-                    const AppSliverAppBar(title: 'Login'),
+                    const AppSliverAppBar(title: 'Register'),
                     SliverList(
                       delegate: SliverChildListDelegate(
                         addAutomaticKeepAlives: true,
@@ -40,8 +39,7 @@ class LoginPage extends StatelessWidget {
                             height: 150,
                           ),
                           AppTextField(
-                            textFieldController:controller.username,
-
+                            textFieldController: controller.username,
                             type: 'username',
                             iconData: Icons.person,
                             inputType: TextInputType.name,
@@ -52,7 +50,7 @@ class LoginPage extends StatelessWidget {
                               return validInput(val!, 4, 20, 'username');
                             },
                           ),
-                          GetBuilder<LoginControllerImp>(builder: (controller) {
+                          GetBuilder<RegisterControllerImp>(builder: (controller) {
                             return AppTextField(
                               textFieldController: controller.password,
                               obscureText: controller.showText,
@@ -74,9 +72,9 @@ class LoginPage extends StatelessWidget {
                             );
                           }),
                           AppSignUpAndLoginButton(
-                            text: 'login',
+                            text: 'register',
                             onPressed: () async {
-                              await controller.login();
+                              await controller.register();
                             },
                           ),
                           // AppLoginSignUp(

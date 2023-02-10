@@ -1,28 +1,31 @@
+
+
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:invarter/controller/auth_controller/login_contoller.dart';
+import 'package:invarter/controller/auth_controller/changePasswordNormal_cont.dart';
 import 'package:invarter/core/class/handelingview.dart';
 import 'package:invarter/core/constant/colors.dart';
 import 'package:invarter/core/function/validinput.dart';
 import 'package:invarter/view/widgets/apploginbutton.dart';
-import 'package:invarter/view/widgets/apploginsignup.dart';
 import 'package:invarter/view/widgets/appsliverappbar.dart';
 import 'package:invarter/view/widgets/apptextfield.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class ChangePasswordNormalPage extends StatelessWidget {
+  const ChangePasswordNormalPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(
-      () => LoginControllerImp(),
+          () => ChangePasswordNormalController(),
       fenix: true,
     );
 
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: GetBuilder<LoginControllerImp>(builder: (controller) {
+        child: GetBuilder<ChangePasswordNormalController>(builder: (controller) {
           return HandelingRequest(
             statusRequest: controller.statusRequest!,
             widget: Center(
@@ -30,7 +33,7 @@ class LoginPage extends StatelessWidget {
                 key: controller.formState,
                 child: CustomScrollView(
                   slivers: [
-                    const AppSliverAppBar(title: 'Login'),
+                    const AppSliverAppBar(title: 'Change Password Normal User'),
                     SliverList(
                       delegate: SliverChildListDelegate(
                         addAutomaticKeepAlives: true,
@@ -39,28 +42,36 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(
                             height: 150,
                           ),
-                          AppTextField(
-                            textFieldController:controller.username,
-
-                            type: 'username',
-                            iconData: Icons.person,
-                            inputType: TextInputType.name,
-                            onChanged: (val) {},
-                            validator: (val) {
-                              controller.username =
-                                  TextEditingController(text: val);
-                              return validInput(val!, 4, 20, 'username');
-                            },
-                          ),
-                          GetBuilder<LoginControllerImp>(builder: (controller) {
+                          GetBuilder<ChangePasswordNormalController>(builder: (controller) {
                             return AppTextField(
-                              textFieldController: controller.password,
+                              textFieldController: controller.password1,
                               obscureText: controller.showText,
                               onTap: () {
                                 controller.changeShow();
                               },
                               validator: (val) {
-                                controller.password =
+                                controller.password1 =
+                                    TextEditingController(text: val);
+                                return validInput(val!, 8, 50, 'password');
+                              },
+                              // controller: controller.password,
+                              type: 'Password',
+                              iconData: controller.showText
+                                  ? Icons.remove_red_eye_outlined
+                                  : Icons.password_outlined,
+                              inputType: TextInputType.visiblePassword,
+                              onChanged: (val) {},
+                            );
+                          }),
+                          GetBuilder<ChangePasswordNormalController>(builder: (controller) {
+                            return AppTextField(
+                              textFieldController: controller.password2,
+                              obscureText: controller.showText,
+                              onTap: () {
+                                controller.changeShow();
+                              },
+                              validator: (val) {
+                                controller.password2 =
                                     TextEditingController(text: val);
                                 return validInput(val!, 8, 50, 'password');
                               },
@@ -74,9 +85,9 @@ class LoginPage extends StatelessWidget {
                             );
                           }),
                           AppSignUpAndLoginButton(
-                            text: 'login',
+                            text: 'change Password',
                             onPressed: () async {
-                              await controller.login();
+                              await controller.changePassword();
                             },
                           ),
                           // AppLoginSignUp(

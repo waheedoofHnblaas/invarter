@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:invarter/core/class/statusrequest.dart';
 import 'package:invarter/core/function/handlingdata.dart';
 import 'package:invarter/core/services/services.dart';
-import 'package:invarter/data/datasource/remote/registerationUser.dart';
-import 'package:invarter/route.dart';
+import 'package:invarter/data/datasource/remote/changePassword.dart';
+import 'package:invarter/view/widgets/apploginbutton.dart';
 
-class RegisterControllerImp extends GetxController {
-  TextEditingController username = TextEditingController();
-  late TextEditingController password = TextEditingController();
+class ChangePasswordNormalController extends GetxController {
+  late TextEditingController password1 = TextEditingController();
+  late TextEditingController password2 = TextEditingController();
   late GlobalKey<FormState> formState = GlobalKey<FormState>();
   late bool showText = true;
   StatusRequest? statusRequest = StatusRequest.none;
-  final RegistrationData registrationData = RegistrationData(Get.find());
+  final ChangePasswordData changePasswordData = ChangePasswordData(Get.find());
   MyServices myServices = Get.find();
 
   changeShow() {
@@ -20,27 +20,33 @@ class RegisterControllerImp extends GetxController {
     update();
   }
 
-  Future<void> register() async {
+  Future<void> changePassword() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await registrationData.registrationData(
+    var response = await changePasswordData.changePasswordData(
+      new_password1: password1.text,
+      new_password2: password2.text,
       token: myServices.sharedPreferences.getString('token').toString(),
-      username: username.text,
-      password: password.text,
+      normal: true,
     );
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
-      if (response['Success'] == true) {
-        print('success registration');
-        Get.back();
-      } else {
+      if(response['Message'].toString().contains('has been changed')){
         print(response['Message']);
+        myServices.sharedPreferences.setString('password', password1.text);
       }
       Get.defaultDialog(
-        title: 'Warning',
-        middleText: response['Message'],
-        backgroundColor: Get.theme.backgroundColor,
+          title: 'Warning',
+          middleText: response['Message'],
+          backgroundColor: Get.theme.backgroundColor,
+          actions: [
+            AppSignUpAndLoginButton(text: 'back to main', onPressed: (){
+              Get.back();
+              Get.back();
+            })
+          ]
       );
+
     } else {
       Get.defaultDialog(
         title: 'Warning',

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:invarter/core/class/statusrequest.dart';
 import 'package:invarter/core/function/handlingdata.dart';
@@ -29,9 +31,11 @@ class LoginControllerImp extends LoginController {
   @override
   login() async {
     if (username.text.isNotEmpty) {
+      print('login prep 1');
       prep();
     } else {
       if (formState.currentState!.validate()) {
+        print('login prep 2');
         prep();
       } else {
         print('not validate');
@@ -78,13 +82,33 @@ class LoginControllerImp extends LoginController {
     {
       statusRequest = StatusRequest.loading;
       update();
+
+      print('login response wait ...');
+      Timer(const Duration(seconds: 15), () {
+        if(statusRequest== StatusRequest.loading){
+          statusRequest = StatusRequest.failure;
+          update();
+          Get.defaultDialog(
+            title: 'Warning',
+            middleText: 'server access error',
+            backgroundColor: Get.theme.backgroundColor,
+          );
+        }
+
+      });
       var response = await loginData.loginData(
         username: username.text,
         password: password.text,
       );
+      print('login response');
+      print(response);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
+        print('login response success');
+
         if (response['key'] != null) {
+          print('login response success key');
+
           myServices.sharedPreferences.setString('token', response['key']);
           myServices.sharedPreferences.setString('username', username.text);
           myServices.sharedPreferences.setString('password', password.text);

@@ -16,39 +16,7 @@ class SystemDataPage extends StatelessWidget {
       drawer: GetBuilder<SystemControllerImp>(builder: (controller) {
         return Drawer(
           width: Get.width / 1.3,
-          child: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        controller.username,
-                        style: Get.textTheme.bodyText1,
-                      ),
-                      controller.isAdmin == true
-                          ? Text(
-                              '  is Admin',
-                              style: Get.textTheme.bodyText2,
-                            )
-                          : Text(
-                              '  is Normal User',
-                              style: Get.textTheme.bodyText2,
-                            ),
-                    ],
-                  ),
-                ),
-                AppSignUpAndLoginButton(
-                  text: 'logout',
-                  onPressed: () {
-                    controller.logout();
-                  },
-                )
-              ],
-            ),
-          ),
+          child: drawer_widget(controller: controller),
         );
       }),
       appBar: AppBar(
@@ -131,6 +99,74 @@ class SystemDataPage extends StatelessWidget {
             );
           }
         }),
+      ),
+    );
+  }
+}
+
+class drawer_widget extends StatelessWidget {
+  drawer_widget({required this.controller});
+
+  SystemControllerImp controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  controller.username,
+                  style: Get.textTheme.bodyText1,
+                ),
+                controller.isAdmin == true
+                    ? Text(
+                        '  is Admin',
+                        style: Get.textTheme.bodyText2,
+                      )
+                    : Text(
+                        '  is Normal User',
+                        style: Get.textTheme.bodyText2,
+                      ),
+              ],
+            ),
+          ),
+          controller.isAdmin
+              ? AppSignUpAndLoginButton(
+                  text: 'Register new user',
+                  onPressed: () {
+                    controller.toRegisterPage();
+                  },
+                )
+              : Container(),
+          controller.isAdmin
+              ? AppSignUpAndLoginButton(
+                  text: 'Change Password',
+                  onPressed: () {
+                    controller.toChangePasswordPage();
+                  },
+                )
+              : Container(),
+         controller.isAdmin
+              ? AppSignUpAndLoginButton(
+                  text: 'Change Password of Normal User',
+                  onPressed: () {
+                    controller.toChangePasswordNormalPage();
+                  },
+                )
+              : Container(),
+
+          AppSignUpAndLoginButton(
+            text: 'logout',
+            onPressed: () {
+              controller.logout();
+            },
+          ),
+        ],
       ),
     );
   }

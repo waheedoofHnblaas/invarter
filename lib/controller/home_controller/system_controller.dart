@@ -76,4 +76,18 @@ class SystemControllerImp extends SystemController {
     myServices.sharedPreferences.clear();
     Get.offAllNamed(AppPages.login);
   }
+
+  void toRegisterPage() {
+    Get.toNamed(AppPages.register);
+  }
+
+  void toChangePasswordPage() {
+    Get.toNamed(AppPages.changePassword);
+
+  }
+
+  void toChangePasswordNormalPage() {
+    Get.toNamed(AppPages.changePasswordNormal);
+
+  }
 }

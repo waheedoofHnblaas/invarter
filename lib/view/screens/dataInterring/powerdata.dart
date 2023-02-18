@@ -21,7 +21,7 @@ class PowerDataPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: CustomScrollView(
         slivers: [
-          const AppSliverAppBar(title: 'POWER SYSTEM DATA'),
+           AppSliverAppBar(title: 'POWER SYSTEM DATA'),
           SliverList(
             delegate: SliverChildListDelegate([
               const SizedBox(

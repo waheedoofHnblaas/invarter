@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppSliverAppBar extends StatelessWidget {
+  const AppSliverAppBar({required this.title,this.action});
 
-  const AppSliverAppBar({required this.title, Key? key}) : super(key: key);
   final String title;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      actions: [action??Container()],
       backgroundColor: Colors.white,
       elevation: 0,
       pinned: true,

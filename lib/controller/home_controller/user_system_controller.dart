@@ -2,19 +2,17 @@ import 'package:get/get.dart';
 import 'package:invarter/core/class/statusrequest.dart';
 import 'package:invarter/core/function/handlingdata.dart';
 import 'package:invarter/core/services/services.dart';
-import 'package:invarter/data/datasource/remote/userDetails.dart';
-import 'package:invarter/data/datasource/static/app_data.dart';
-import 'package:invarter/data/model/data_model.dart';
+import 'package:invarter/data/datasource/remote/auth-remote/userDetails.dart';
 import 'package:invarter/route.dart';
 
 abstract class SystemController extends GetxController {
-  Future getData();
+  Future getUserData();
 
   String getBool(int value);
 }
 
 class SystemControllerImp extends SystemController {
-  DataModel dataModel = DataModel();
+  // DataModel dataModel = DataModel();
   StatusRequest statusRequest = StatusRequest.loading;
   final UserDetails userDetails = UserDetails(Get.find());
   MyServices myServices = Get.find();
@@ -26,12 +24,12 @@ class SystemControllerImp extends SystemController {
     print(myServices.sharedPreferences.get('username'));
     print(myServices.sharedPreferences.get('password'));
     username = myServices.sharedPreferences.get('username').toString();
-    await getData();
+    await getUserData();
     super.onInit();
   }
 
   @override
-  Future getData() async {
+  Future getUserData() async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await userDetails.userDetails(
@@ -58,8 +56,7 @@ class SystemControllerImp extends SystemController {
       );
       statusRequest = StatusRequest.failure;
     }
-    dataModel = DataModel.fromJson(AppStaticData.data);
-    statusRequest = StatusRequest.success;
+    // dataModel = DataModel.fromJson(AppStaticData.data);
     update();
   }
 
@@ -88,6 +85,11 @@ class SystemControllerImp extends SystemController {
 
   void toChangePasswordNormalPage() {
     Get.toNamed(AppPages.changePasswordNormal);
+
+  }
+
+  void toInverterSettingsPage() {
+    Get.toNamed(AppPages.inverterSettings);
 
   }
 }

@@ -1,4 +1,5 @@
-class ErrorModel {
+
+class FaultsModel {
   String? sCommand;
   String? sCommandDescription;
   String? inverterFault;
@@ -31,7 +32,7 @@ class ErrorModel {
   String? batteryTooLowToChargeWarning;
   String? createAt;
 
-  ErrorModel(
+  FaultsModel(
       {this.sCommand,
         this.sCommandDescription,
         this.inverterFault,
@@ -64,7 +65,7 @@ class ErrorModel {
         this.batteryTooLowToChargeWarning,
         this.createAt});
 
-  ErrorModel.fromJson(Map<String, dynamic> json) {
+  FaultsModel.fromJson(Map<String, dynamic> json) {
     sCommand = json['_command'];
     sCommandDescription = json['_command_description'];
     inverterFault = json['inverter_fault'];
@@ -99,39 +100,39 @@ class ErrorModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_command'] = this.sCommand;
-    data['_command_description'] = this.sCommandDescription;
-    data['inverter_fault'] = this.inverterFault;
-    data['bus_over_fault'] = this.busOverFault;
-    data['bus_under_fault'] = this.busUnderFault;
-    data['bus_soft_fail_fault'] = this.busSoftFailFault;
-    data['line_fail_warning'] = this.lineFailWarning;
-    data['opv_short_warning'] = this.opvShortWarning;
-    data['inverter_voltage_too_low_fault'] = this.inverterVoltageTooLowFault;
-    data['inverter_voltage_too_high_fault'] = this.inverterVoltageTooHighFault;
-    data['over_temperature_fault'] = this.overTemperatureFault;
-    data['fan_locked_fault'] = this.fanLockedFault;
-    data['battery_voltage_to_high_fault'] = this.batteryVoltageToHighFault;
-    data['battery_low_alarm_warning'] = this.batteryLowAlarmWarning;
-    data['reserved'] = this.reserved;
-    data['battery_under_shutdown_warning'] = this.batteryUnderShutdownWarning;
-    data['overload_fault'] = this.overloadFault;
-    data['eeprom_fault'] = this.eepromFault;
-    data['inverter_over_current_fault'] = this.inverterOverCurrentFault;
-    data['inverter_soft_fail_fault'] = this.inverterSoftFailFault;
-    data['self_test_fail_fault'] = this.selfTestFailFault;
-    data['op_dc_voltage_over_fault'] = this.opDcVoltageOverFault;
-    data['bat_open_fault'] = this.batOpenFault;
-    data['current_sensor_fail_fault'] = this.currentSensorFailFault;
-    data['battery_short_fault'] = this.batteryShortFault;
-    data['power_limit_warning'] = this.powerLimitWarning;
-    data['pv_voltage_high_warning'] = this.pvVoltageHighWarning;
-    data['mppt_overload_fault'] = this.mpptOverloadFault;
-    data['mppt_overload_warning'] = this.mpptOverloadWarning;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_command'] = sCommand;
+    data['_command_description'] = sCommandDescription;
+    data['inverter_fault'] = inverterFault;
+    data['bus_over_fault'] = busOverFault;
+    data['bus_under_fault'] = busUnderFault;
+    data['bus_soft_fail_fault'] = busSoftFailFault;
+    data['line_fail_warning'] = lineFailWarning;
+    data['opv_short_warning'] = opvShortWarning;
+    data['inverter_voltage_too_low_fault'] = inverterVoltageTooLowFault;
+    data['inverter_voltage_too_high_fault'] = inverterVoltageTooHighFault;
+    data['over_temperature_fault'] = overTemperatureFault;
+    data['fan_locked_fault'] = fanLockedFault;
+    data['battery_voltage_to_high_fault'] = batteryVoltageToHighFault;
+    data['battery_low_alarm_warning'] = batteryLowAlarmWarning;
+    data['reserved'] = reserved;
+    data['battery_under_shutdown_warning'] = batteryUnderShutdownWarning;
+    data['overload_fault'] = overloadFault;
+    data['eeprom_fault'] = eepromFault;
+    data['inverter_over_current_fault'] = inverterOverCurrentFault;
+    data['inverter_soft_fail_fault'] = inverterSoftFailFault;
+    data['self_test_fail_fault'] = selfTestFailFault;
+    data['op_dc_voltage_over_fault'] = opDcVoltageOverFault;
+    data['bat_open_fault'] = batOpenFault;
+    data['current_sensor_fail_fault'] = currentSensorFailFault;
+    data['battery_short_fault'] = batteryShortFault;
+    data['power_limit_warning'] = powerLimitWarning;
+    data['pv_voltage_high_warning'] = pvVoltageHighWarning;
+    data['mppt_overload_fault'] = mpptOverloadFault;
+    data['mppt_overload_warning'] = mpptOverloadWarning;
     data['battery_too_low_to_charge_warning'] =
-        this.batteryTooLowToChargeWarning;
-    data['create at'] = this.createAt;
+        batteryTooLowToChargeWarning;
+    data['create at'] = createAt;
     return data;
   }
 }

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:invarter/core/class/statusrequest.dart';
 import 'package:invarter/core/function/handlingdata.dart';
 import 'package:invarter/core/services/services.dart';
-import 'package:invarter/data/datasource/remote/registerationUser.dart';
+import 'package:invarter/data/datasource/remote/auth-remote/registerationUser.dart';
 import 'package:invarter/route.dart';
 
 class RegisterControllerImp extends GetxController {

@@ -51,6 +51,28 @@ class Crud {
       return const Left(StatusRequest.serverExp);
     }
   }
+  Future<Either<StatusRequest, Map>> deleteData(
+      String urlLink, Map<String, String>? headers) async {
+    try {
+      if (await checkInternet()) {
+        var response =
+            await http.delete(Uri.parse(urlLink), headers: headers,);
+        if (response.statusCode == 200 || response.statusCode == 201) {
+          Map responceBody = jsonDecode(response.body);
+          print('==========responceBody.length================');
+          print(responceBody.length);
+          print('==========Crud================');
+          return Right(responceBody);
+        } else {
+          return const Left(StatusRequest.failure);
+        }
+      } else {
+        return const Left(StatusRequest.offline);
+      }
+    } catch (_) {
+      return const Left(StatusRequest.serverExp);
+    }
+  }
 
   Future<Either<StatusRequest, Map>> postDataWithImage(
       String urlLink, Map data, File file) async {

@@ -1,10 +1,10 @@
 class DataModel {
   String? sCommand;
   String? sCommandDescription;
-  int? acInputVoltage;
-  int? acInputFrequency;
+  double? acInputVoltage;
+  double? acInputFrequency;
   double? acOutputVoltage;
-  int? acOutputFrequency;
+  double? acOutputFrequency;
   int? acOutputApparentPower;
   int? acOutputActivePower;
   int? acOutputLoad;
@@ -13,9 +13,9 @@ class DataModel {
   int? batteryChargingCurrent;
   int? batteryCapacity;
   int? inverterHeatSinkTemperature;
-  int? pvInputCurrentForBattery;
-  int? pvInputVoltage;
-  int? batteryVoltageFromScc;
+  double? pvInputCurrentForBattery;
+  double? pvInputVoltage;
+  double? batteryVoltageFromScc;
   int? batteryDischargeCurrent;
   int? isSbuPriorityVersionAdded;
   int? isConfigurationChanged;
@@ -106,41 +106,41 @@ class DataModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_command'] = this.sCommand;
-    data['_command_description'] = this.sCommandDescription;
-    data['ac_input_voltage'] = this.acInputVoltage;
-    data['ac_input_frequency'] = this.acInputFrequency;
-    data['ac_output_voltage'] = this.acOutputVoltage;
-    data['ac_output_frequency'] = this.acOutputFrequency;
-    data['ac_output_apparent_power'] = this.acOutputApparentPower;
-    data['ac_output_active_power'] = this.acOutputActivePower;
-    data['ac_output_load'] = this.acOutputLoad;
-    data['bus_voltage'] = this.busVoltage;
-    data['battery_voltage'] = this.batteryVoltage;
-    data['battery_charging_current'] = this.batteryChargingCurrent;
-    data['battery_capacity'] = this.batteryCapacity;
-    data['inverter_heat_sink_temperature'] = this.inverterHeatSinkTemperature;
-    data['pv_input_current_for_battery'] = this.pvInputCurrentForBattery;
-    data['pv_input_voltage'] = this.pvInputVoltage;
-    data['battery_voltage_from_scc'] = this.batteryVoltageFromScc;
-    data['battery_discharge_current'] = this.batteryDischargeCurrent;
-    data['is_sbu_priority_version_added'] = this.isSbuPriorityVersionAdded;
-    data['is_configuration_changed'] = this.isConfigurationChanged;
-    data['is_scc_firmware_updated'] = this.isSccFirmwareUpdated;
-    data['is_load_on'] = this.isLoadOn;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_command'] = sCommand;
+    data['_command_description'] = sCommandDescription;
+    data['ac_input_voltage'] = acInputVoltage;
+    data['ac_input_frequency'] = acInputFrequency;
+    data['ac_output_voltage'] = acOutputVoltage;
+    data['ac_output_frequency'] = acOutputFrequency;
+    data['ac_output_apparent_power'] = acOutputApparentPower;
+    data['ac_output_active_power'] = acOutputActivePower;
+    data['ac_output_load'] = acOutputLoad;
+    data['bus_voltage'] = busVoltage;
+    data['battery_voltage'] = batteryVoltage;
+    data['battery_charging_current'] = batteryChargingCurrent;
+    data['battery_capacity'] = batteryCapacity;
+    data['inverter_heat_sink_temperature'] = inverterHeatSinkTemperature;
+    data['pv_input_current_for_battery'] = pvInputCurrentForBattery;
+    data['pv_input_voltage'] = pvInputVoltage;
+    data['battery_voltage_from_scc'] = batteryVoltageFromScc;
+    data['battery_discharge_current'] = batteryDischargeCurrent;
+    data['is_sbu_priority_version_added'] = isSbuPriorityVersionAdded;
+    data['is_configuration_changed'] = isConfigurationChanged;
+    data['is_scc_firmware_updated'] = isSccFirmwareUpdated;
+    data['is_load_on'] = isLoadOn;
     data['is_battery_voltage_to_steady_while_charging'] =
-        this.isBatteryVoltageToSteadyWhileCharging;
-    data['is_charging_on'] = this.isChargingOn;
-    data['is_scc_charging_on'] = this.isSccChargingOn;
-    data['is_ac_charging_on'] = this.isAcChargingOn;
-    data['rsv1'] = this.rsv1;
-    data['rsv2'] = this.rsv2;
-    data['pv_input_power'] = this.pvInputPower;
-    data['is_charging_to_float'] = this.isChargingToFloat;
-    data['is_switched_on'] = this.isSwitchedOn;
-    data['is_reserved'] = this.isReserved;
-    data['create at'] = this.createAt;
+        isBatteryVoltageToSteadyWhileCharging;
+    data['is_charging_on'] = isChargingOn;
+    data['is_scc_charging_on'] = isSccChargingOn;
+    data['is_ac_charging_on'] = isAcChargingOn;
+    data['rsv1'] = rsv1;
+    data['rsv2'] = rsv2;
+    data['pv_input_power'] = pvInputPower;
+    data['is_charging_to_float'] = isChargingToFloat;
+    data['is_switched_on'] = isSwitchedOn;
+    data['is_reserved'] = isReserved;
+    data['create at'] = createAt;
     return data;
   }
 }

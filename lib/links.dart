@@ -13,10 +13,14 @@ class AppLinks {
       '$serverLink/rest-auth/password/change/';
   static const String change_password_normal =
       '$serverLink/rest-auth/normal/password/change/';
+  static const String delete_user = '$serverLink/rest-auth/user/delete/';
 
   //========================    home    ===========================
   static const String getUserDetails = '$serverLink/rest-auth/user/';
+  static const String getDataInfo = '$serverLink/api/data/get/';
 
-//========================    Forget Password    ===========================
+//========================    inverter    ===========================
+  static const String getInverterSettingsInfo = '$serverLink/api/inverter/settings/get/';
+  static const String getInverterCommands = '$serverLink/api/command/get/';
 
 }

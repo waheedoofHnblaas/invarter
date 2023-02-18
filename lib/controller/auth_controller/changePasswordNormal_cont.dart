@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:invarter/core/class/statusrequest.dart';
 import 'package:invarter/core/function/handlingdata.dart';
 import 'package:invarter/core/services/services.dart';
-import 'package:invarter/data/datasource/remote/changePassword.dart';
+import 'package:invarter/data/datasource/remote/auth-remote/changePassword.dart';
 import 'package:invarter/view/widgets/apploginbutton.dart';
 
 class ChangePasswordNormalController extends GetxController {

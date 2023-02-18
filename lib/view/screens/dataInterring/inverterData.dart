@@ -17,7 +17,7 @@ class InverterDataPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: CustomScrollView(
         slivers: [
-          const AppSliverAppBar(title: 'INVERTER SYSTEM DATA'),
+           AppSliverAppBar(title: 'INVERTER SYSTEM DATA'),
           SliverList(
             delegate: SliverChildListDelegate([
               const SizedBox(

@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.textColor,
         textTheme: TextTheme(
           bodyText1: TextStyle(color: AppColors.textColor),
-          bodyText2: TextStyle(color: AppColors.connectCardColor,fontWeight: FontWeight.bold),
+          bodyText2: TextStyle(color: AppColors.connectCardColor,fontWeight: FontWeight.bold,fontSize: 24),
         ),
         fontFamily: 'Cairo',
       ),

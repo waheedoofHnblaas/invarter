@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invarter/controller/auth_controller/deleteUser_controller.dart';
 import 'package:invarter/controller/auth_controller/login_contoller.dart';
 import 'package:invarter/core/class/handelingview.dart';
 import 'package:invarter/core/constant/colors.dart';
 import 'package:invarter/core/function/validinput.dart';
 import 'package:invarter/view/widgets/apploginbutton.dart';
-import 'package:invarter/view/widgets/apploginsignup.dart';
 import 'package:invarter/view/widgets/appsliverappbar.dart';
 import 'package:invarter/view/widgets/apptextfield.dart';
 

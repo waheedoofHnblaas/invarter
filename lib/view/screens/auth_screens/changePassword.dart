@@ -90,13 +90,6 @@ class ChangePasswordPage extends StatelessWidget {
                               await controller.changePassword();
                             },
                           ),
-                          // AppLoginSignUp(
-                          //   textone: 'you don\'t have account ?',
-                          //   texttwo: 'sign up',
-                          //   onPressed: () {
-                          //     controller.toRegister();
-                          //   },
-                          // )
                         ],
                       ),
                     )

@@ -2,7 +2,7 @@
   "name": "Flutter-InAppUpgrade",
   "description": "this is Flutter-InAppUpgrade local example app",
   "release_notes": "\n1. \n2. \n3.",
-  "version": "0.3.1-beta+20130313144700",
+  "version": "0.1.0",
   "os": "windows",
   "installers": [{
     "initializer": "windows_app_store",
